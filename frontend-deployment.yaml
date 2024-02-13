@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose-linux-amd64 convert
+    kompose.version: 1.31.2 (a92241f79)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: frontend
+  name: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: frontend
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose-linux-amd64 convert
+        kompose.version: 1.31.2 (a92241f79)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/kompose-default: "true"
+        io.kompose.service: frontend
+    spec:
+      containers:
+        - env:
+            - name: PORT
+              value: "8081"
+            - name: VITE_APP_BACKEND_V2_GET_URL
+              value: https://test.com/api/v2/
+            - name: VITE_APP_BACKEND_V2_POST_URL
+              value: https://test.com/api/v2/post/
+            - name: VITE_APP_FIREBASE_CONFIG
+              value: '{}'
+            - name: VITE_APP_HTTP_STORAGE_BACKEND_URL
+              value: http://127.0.0.1:8081/api/v2
+            - name: VITE_APP_STORAGE_BACKEND
+              value: http
+            - name: VITE_APP_WS_SERVER_URL
+              value: http://127.0.0.1:8082
+          image: quay.apps.mgmt1.ocp.trafikverket.local/registry-1.docker.io/ponchoe/excalidraw:v0.17.0-fork-b2
+          name: frontend
+          ports:
+            - containerPort: 8080
+              #hostPort: 8080
+              protocol: TCP
+          resources: {}
+      restartPolicy: Always
+status: {}

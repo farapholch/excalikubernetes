@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose-linux-amd64 convert
+    kompose.version: 1.31.2 (a92241f79)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: room
+  name: room
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: room
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose-linux-amd64 convert
+        kompose.version: 1.31.2 (a92241f79)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/kompose-default: "true"
+        io.kompose.service: room
+    spec:
+      containers:
+        - image: quay.apps.mgmt1.ocp.trafikverket.local/registry-1.docker.io/excalidraw/excalidraw-room:sha-49bf529
+          name: room
+          ports:
+            - containerPort: 8082
+              hostPort: 8082
+              protocol: TCP
+          resources: {}
+      restartPolicy: Always
+status: {}
