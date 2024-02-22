@@ -1,1 +1,1 @@
-Kubernetes support for Excalicollab
+Kubernetes support for Excalicollab converted with compose.
