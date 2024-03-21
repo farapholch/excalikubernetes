@@ -40,7 +40,7 @@ spec:
               value: http
             - name: VITE_APP_WS_SERVER_URL
               value: http://127.0.0.1:8082
-          image: quay.apps.mgmt1.ocp.trafikverket.local/registry-1.docker.io/ponchoe/excalidraw:v0.17.0-fork-b2
+          image: quay.apps.mgmt1.ocp.trafikverket.local/registry-1.docker.io/alswl/excalidraw:v0.17.3-fork-b1
           name: frontend
           ports:
             - containerPort: 8080
