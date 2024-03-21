@@ -28,7 +28,7 @@ spec:
         - env:
             - name: PORT
               value: "8081"
-          image: quay.apps.mgmt1.ocp.trafikverket.local/registry-1.docker.io/ponchoe/excalidraw-storage-backend:v2023.11.11
+          image: quay.apps.mgmt1.ocp.trafikverket.local/registry-1.docker.io/alswl/excalidraw-storage-backend:v2023.11.11
           name: storage
           ports:
             - containerPort: 8081
